@@ -18,23 +18,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.kakao.auth.ApiResponseCallback;
-import com.kakao.auth.AuthService;
-import com.kakao.auth.network.response.AccessTokenInfoResponse;
-import com.kakao.network.ErrorResult;
-import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
-import com.kakao.usermgmt.callback.UnLinkResponseCallback;
-import com.origincurly.toodletoodle.util.ErrorCodeEnum;
-import com.origincurly.toodletoodle.util.NetworkManager;
 
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.CODE_KAKAO_SESSION_CLOSED;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.CODE_KAKAO_TOKEN_FAIL;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.CODE_NORMAL;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.CODE_UNKNOWN;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.enum2String;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.enum2int;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.int2Enum;
+import com.example.toodle.util.NetworkManager;
+import com.google.android.datatransport.BuildConfig;
+import com.example.toodle.util.ErrorCodeEnum;
+
+import static com.example.toodle.util.ErrorCodeEnum.CODE_KAKAO_SESSION_CLOSED;
+import static com.example.toodle.util.ErrorCodeEnum.CODE_KAKAO_TOKEN_FAIL;
+import static com.example.toodle.util.ErrorCodeEnum.CODE_NORMAL;
+import static com.example.toodle.util.ErrorCodeEnum.CODE_UNKNOWN;
+import static com.example.toodle.util.ErrorCodeEnum.enum2String;
+import static com.example.toodle.util.ErrorCodeEnum.enum2int;
+import static com.example.toodle.util.ErrorCodeEnum.int2Enum;
 
 public class BasicActivity extends AppCompatActivity implements GlobalValue {
 
@@ -789,66 +784,6 @@ public class BasicActivity extends AppCompatActivity implements GlobalValue {
     public String naverId, kakaoId, googleId;
 
     // kakao
-    public void setKakaoLogout() {
-        UserManagement.getInstance()
-                .requestLogout(new LogoutResponseCallback() {
-                    @Override
-                    public void onCompleteLogout() {
-                        Log.d("KAKAO_API", "로그아웃 완료");
-                    }
-                });
-    }
-
-    public void setKakaoDisconnect() {
-        UserManagement.getInstance()
-                .requestUnlink(new UnLinkResponseCallback() {
-                    @Override
-                    public void onSessionClosed(ErrorResult errorResult) {
-                        Log.d("KAKAO_API", "세션이 닫혀 있음: " + errorResult);
-                    }
-
-                    @Override
-                    public void onFailure(ErrorResult errorResult) {
-                        Log.d("KAKAO_API", "연결 끊기 실패: " + errorResult);
-
-                    }
-                    @Override
-                    public void onSuccess(Long result) {
-                        Log.d("KAKAO_API", "연결 끊기 성공. id: " + result);
-                    }
-                });
-    }
-
-    public void getKakaoToken() {
-        AuthService.getInstance()
-                .requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
-                    @Override
-                    public void onSessionClosed(ErrorResult errorResult) {
-                        Log.d("KAKAO_API", "세션이 닫혀 있음: " + errorResult);
-
-                        resultKakaoToken(CODE_KAKAO_SESSION_CLOSED);
-                    }
-
-                    @Override
-                    public void onFailure(ErrorResult errorResult) {
-                        Log.d("KAKAO_API", "토큰 정보 요청 실패: " + errorResult);
-
-                        resultKakaoToken(CODE_KAKAO_TOKEN_FAIL);
-                    }
-
-                    @Override
-                    public void onSuccess(AccessTokenInfoResponse result) {
-                        Log.d("KAKAO_API", "사용자 아이디: " + result.getUserId());
-                        Log.d("KAKAO_API", "남은 시간(s): " + result.getExpiresIn());
-
-                        kakaoId = String.valueOf(result.getUserId());
-                        resultKakaoToken(CODE_NORMAL);
-                    }
-                });
-    }
-
-    public void resultKakaoToken(ErrorCodeEnum errorCodeEnum) {
-    }
 
 
     //endregion

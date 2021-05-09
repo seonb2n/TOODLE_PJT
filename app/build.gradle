@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.toodle"
+        applicationId "com.origincurly.toodletoodle"
         minSdkVersion 23
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 29
+        versionCode 2
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,10 +25,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.30.0'
-
     implementation 'com.squareup.okhttp3:okhttp:3.12.1' // web http
-    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1' // Session
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.4' // time
 
     implementation 'com.google.firebase:firebase-analytics:17.5.0'

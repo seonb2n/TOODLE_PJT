@@ -11,12 +11,13 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.origincurly.toodletoodle.util.ErrorCodeEnum;
+import com.example.toodle.util.ErrorCodeEnum;
+import com.google.firebase.BuildConfig;
 
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.CODE_UNKNOWN;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.enum2String;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.enum2int;
-import static com.origincurly.toodletoodle.util.ErrorCodeEnum.int2Enum;
+import static com.example.toodle.util.ErrorCodeEnum.CODE_UNKNOWN;
+import static com.example.toodle.util.ErrorCodeEnum.enum2String;
+import static com.example.toodle.util.ErrorCodeEnum.enum2int;
+import static com.example.toodle.util.ErrorCodeEnum.int2Enum;
 
 public class BasicFragment extends Fragment implements GlobalValue {
 
@@ -45,6 +46,7 @@ public class BasicFragment extends Fragment implements GlobalValue {
     public void setFragment(Context context, Activity activity) {
         mContext = context;
         mActivity = activity;
+
 
         if (BuildConfig.DEBUG) {
             apiUrl = API_URL_DEBUG;
