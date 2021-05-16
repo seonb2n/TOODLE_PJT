@@ -13,7 +13,7 @@
         android:layout_marginTop="56dp"/>
 
     <EditText
-        android:id="@+id/mail_EditText"
+        android:id="@+id/mail_EditTxt"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
