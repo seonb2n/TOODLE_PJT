@@ -65,6 +65,7 @@ public class IntroActivity extends BasicActivity{
             //region delayActivityHandler
             startActivityIntent(introActivityIntent, R.anim.animation_fade_in, R.anim.animation_stop_short);
             //endregion
+            finish();
         }
     };
 }
