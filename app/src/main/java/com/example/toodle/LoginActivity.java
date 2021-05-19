@@ -107,7 +107,7 @@ public class LoginActivity extends BasicActivity{
     }
 
     public void JoinMailClicked(View v) {
-        //이메일 회원가입 버튼 눌림
+        startActivityClass(JoinMailActivity.class, R.anim.animation_fade_in, R.anim.animation_stop_short);
     }
 
     private void setInputResult() {
